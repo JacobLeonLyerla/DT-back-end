@@ -3,9 +3,13 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 const cors = require("cors");
 
+const TagsRouter = require("./tagRoutes/tagRouter")
+
 const server = express();
 server.use(cors());
 server.use(express.json());
+
+server.use("/tags", TagsRouter)
 
 mongoose
   .connect(`mongodb://jake:1test1@ds131954.mlab.com:31954/dream-trekking`)
