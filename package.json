@@ -1,0 +1,8 @@
+{
+  "name": "DT-back-end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/JacobLeonLyerla/DT-back-end.git",
+  "author": "Jacob Leon Lyerla <umasour@yahoo.com>",
+  "license": "MIT"
+}
