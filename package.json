@@ -4,5 +4,17 @@
   "main": "index.js",
   "repository": "https://github.com/JacobLeonLyerla/DT-back-end.git",
   "author": "Jacob Leon Lyerla <umasour@yahoo.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "helmet": "^3.15.0",
+    "mongoose": "^5.3.16",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "stripe": "^6.19.0",
+    "validator": "^10.9.0"
+  }
 }
