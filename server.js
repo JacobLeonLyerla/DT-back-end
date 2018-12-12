@@ -11,3 +11,7 @@ mongoose
   server.get("/", (req, res) => {
     res.status(200).json({ api: `the api is running on port ${port}` });
   });
+  const port = process.env.PORT || 5500;
+
+  server.listen(port, () => console.log(`\n=== api is up on port: ${port} ==\n`));
+  
