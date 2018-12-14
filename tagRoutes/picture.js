@@ -5,6 +5,9 @@ const Picture = new mongoose.Schema({
     type: String,
     required: true
   },
+  tag:{
+      type:Array
+  },
   country: String,
   region: String,
   city: String,
