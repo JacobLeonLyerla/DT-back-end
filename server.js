@@ -2,13 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
 const cors = require("cors");
-
+const PictureRouter = require("./tagRoutes/pictureRouter")
 const TagsRouter = require("./tagRoutes/tagRouter")
 
 const server = express();
 server.use(cors());
 server.use(express.json());
-
+server.use("/pictures", PictureRouter)
 server.use("/tags", TagsRouter)
 
 mongoose
