@@ -28,5 +28,18 @@ const validateRegisterInput = ({ username, email, password, password2 }) => {
     errors.password =
       "Password most be six or more characters, no more than thirty.";
   }
+  if (Validator.isEmpty(password2)) {
+    errors.password2 = "Password must be confirmed.";
+  }
+
+  if (!Validator.equals(password, password2)) {
+    errors.password2 = "These passwords did not match.";
+  }
+
+  return {
+    errors,
+    isValid: isEmpty(errors)
+  };
+
 };
 module.exports = validateRegisterInput;
