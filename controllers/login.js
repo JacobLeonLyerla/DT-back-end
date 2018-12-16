@@ -29,3 +29,10 @@ const localstategy = new LocalStrategy((username,password,done)=>{
         })
     })
 })
+const authenicate = passport.authenticate("local",{session:false});
+
+const login = (req,res)=>{
+    res.json({roken:makeToken(req.user), user:req.user});
+}
+
+module.exports = {login,authenicate, LocalStrategy}
