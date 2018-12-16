@@ -20,7 +20,12 @@ const localstategy = new LocalStrategy((username,password,done)=>{
         if(!user) return done(null,false);
 
         user.checkPassword(password,(err,isMatch)=>{
-            
+            if(err) return done(err);
+            if(isMatch){
+                const{_id,  username email, membership} =user;
+                return done(null, {_id, username, email, membership})
+            }
+            return done(null,false);
         })
     })
 })
