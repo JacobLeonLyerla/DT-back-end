@@ -13,3 +13,14 @@ const makeToken = user => {
   const options = { expiresIn: "2h" };
   return jwt.sign(payload, process.env.SECRETKEY, options);
 };
+
+const localstategy = new LocalStrategy((username,password,done)=>{
+    User.findOne({username},(err,user)=>{
+        if(err)return done(err);
+        if(!user) return done(null,false);
+
+        user.checkPassword(password,(err,isMatch)=>{
+            
+        })
+    })
+})
