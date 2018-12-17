@@ -4,7 +4,7 @@ const passport = require("passport");
 const User = require("../tagRoutes/user");
 const jwtOptions ={
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: "MyS3cr3tK3Y"
+    secretOrKey: "secret212312"
 };
 const jwtStrategy = new JwtStrategy(jwtOptions, (payload, done) => {
     User.findById(payload.sub)

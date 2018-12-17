@@ -1,5 +1,5 @@
 const router = require("express").Router();
-
+const { protected, jwtStrategy } = require("../jwt/jwt");
 const Picture = require("./picture");
 
 router.get("/:id", (req, res) => {
@@ -26,7 +26,7 @@ router.put("/:id", (req, res) => {
       res.status(500).json({ error: err });
     });
 });
-router.get("/", (req, res) => {
+router.get("/",protected, (req, res) => {
   Picture.find()
     .then(response => {
       res.status(200).json(response);
