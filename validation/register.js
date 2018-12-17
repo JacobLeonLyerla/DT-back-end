@@ -7,7 +7,7 @@ const validateRegisterInput = ({ username, email, password, password2 }) => {
   email = !isEmpty(email) ? email : "";
   password = !isEmpty(password) ? password : "";
   password2 = !isEmpty(password2) ? password2 : "";
-  if (!Validator.isLength(username, { min: 6, max: 30 })) {
+  if (!Validator.isLength(username, { min: 2, max: 30 })) {
     errors.username =
       "Username most be six or more characters, no more than thirty.";
   }
