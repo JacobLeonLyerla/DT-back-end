@@ -1,13 +1,12 @@
-const {ExtractJwt} = require("passport-jwt");
-const JwtStrategy  =  require("passport-jwt").Strategy;
+const { ExtractJwt } = require("passport-jwt");
+const JwtStrategy = require("passport-jwt").Strategy;
 const passport = require("passport");
 const User = require("../tagRoutes/user");
 const jwtOptions ={
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: process.env.secretket
+    secretOrKey: "MyS3cr3tK3Y"
 };
-const jwtStrategy = new JwtStrategy(jwtOptions,(payload,done)=>{
-
+const jwtStrategy = new JwtStrategy(jwtOptions, (payload, done) => {
     User.findById(payload.sub)
     .select("-password")
     .then(user=>{
@@ -22,5 +21,7 @@ const jwtStrategy = new JwtStrategy(jwtOptions,(payload,done)=>{
         )
     });
 
-const protected = passport.authenticate("jwt",{session:false});
-module.exports ={jwtStrategy,protected};
+    const protected = passport.authenticate("jwt", { session: false });
+
+    module.exports = { jwtStrategy, protected };
+    
