@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/user");
+const User = require("../tagRoutes/user");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
@@ -22,7 +22,7 @@ const localstategy = new LocalStrategy((username,password,done)=>{
         user.checkPassword(password,(err,isMatch)=>{
             if(err) return done(err);
             if(isMatch){
-                const{_id,  username email, membership} =user;
+                const{_id,  username, email, membership} =user;
                 return done(null, {_id, username, email, membership})
             }
             return done(null,false);
