@@ -14,7 +14,7 @@ const makeToken = user => {
   return jwt.sign(payload, process.env.SECRETKEY, options);
 };
 
-const localstategy = new LocalStrategy((username,password,done)=>{
+const localStrategy = new LocalStrategy((username,password,done)=>{
     User.findOne({username},(err,user)=>{
         if(err)return done(err);
         if(!user) return done(null,false);
@@ -29,10 +29,10 @@ const localstategy = new LocalStrategy((username,password,done)=>{
         })
     })
 })
-const authenicate = passport.authenticate("local",{session:false});
+const authenticate = passport.authenticate("local",{session:false});
 
 const login = (req,res)=>{
     res.json({roken:makeToken(req.user), user:req.user});
 }
 
-module.exports = {login,authenicate, LocalStrategy}
+module.exports = {login, authenticate, localStrategy}
