@@ -14,6 +14,10 @@ const validateLoginInput = ({username,password})=>{
     }
     if(!Validator.isLength(password,{min:6,max:30})){
         errros.password ="Password must be between two and thirty characters."
-
     }
-}
+    return {
+        errors,
+        isValid: isEmpty(errors)
+    };
+};
+module.exports = validateLoginInput
