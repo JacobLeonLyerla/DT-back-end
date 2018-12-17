@@ -6,7 +6,7 @@ const cors = require("cors");
 const PictureRouter = require("./tagRoutes/pictureRouter");
 const TagsRouter = require("./tagRoutes/tagRouter");
 const AuthRouter = require("./routers/authRouter");
-
+const UserRouter = require("./tagRoutes/userRouter");
 const server = express();
 server.use(cors());
 server.use(express.json());
@@ -14,6 +14,7 @@ server.use(express.json());
 server.use("/pictures", PictureRouter);
 server.use("/tags", TagsRouter);
 server.use("/auth", AuthRouter);
+server.use("/users",UserRouter)
 mongoose
   .connect(`mongodb://jake:1test1@ds131954.mlab.com:31954/dream-trekking`)
   .then(() => console.log(`\n====  connected to mongo ====\n`))
