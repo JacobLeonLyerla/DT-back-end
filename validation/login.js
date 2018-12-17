@@ -3,7 +3,7 @@ const isEmpty = require("../validation/is-empty");
 
 const validateLoginInput = ({username,password})=>{
     let errros = {}
-    username = !isEmpty=(username)? username:"";
+    username = !isEmpty(username)? username:"";
     password = !isEmpty(password)? password:"";
 
     if(!Validator.isLength(username,{min:2, max:30})){
