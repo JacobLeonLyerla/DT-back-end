@@ -17,10 +17,10 @@ const jwtStrategy = new JwtStrategy(jwtOptions,(payload,done)=>{
             done(null,false);
         }
         })
-        .catch(err=>{
+        .catch(err=>
             done(err,false)
-        })
-    })
-})
+        )
+    });
+
 const protected = passport.authenticate("jwt",{session:false});
 module.exports ={jwtStrategy,protected};
