@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const jwt = require('jsonwebtoken');
+const { protected, jwtStrategy } = require("../jwt/jwt");
 
 const User = require("./user");
 const validateToken = (req, res, next) => {
@@ -34,7 +35,7 @@ router.get("/", validateToken, (req, res) => {
         return res.send(err);
       });
   });
-  router.get("/:id",validateToken, (req, res) => {
+  router.get("/:id",protected, (req, res) => {
     const { id } = req.params;
     User.findById(id)
       .then(response => {
