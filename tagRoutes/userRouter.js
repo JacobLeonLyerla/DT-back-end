@@ -34,7 +34,7 @@ router.get("/", validateToken, (req, res) => {
         return res.send(err);
       });
   });
-  router.get("/:id", (req, res) => {
+  router.get("/:id",validateToken, (req, res) => {
     const { id } = req.params;
     User.findById(id)
       .then(response => {
