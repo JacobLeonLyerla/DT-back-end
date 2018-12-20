@@ -34,4 +34,14 @@ router.get("/", validateToken, (req, res) => {
         return res.send(err);
       });
   });
+  router.get("/:id", (req, res) => {
+    const { id } = req.params;
+    User.findById(id)
+      .then(response => {
+        res.status(202).json(response);
+      })
+      .catch(err => {
+        res.status(500).json;
+      });
+  });
   module.exports = router;

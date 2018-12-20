@@ -36,11 +36,7 @@ const userSchema = mongoose.Schema({
   },
   subscription: String
 });
-
-//Added in Bcrypt for PW hashing
 userSchema.pre("save", function(next) {
-  // check if record is new, fixes the issue with rehashing user's password on 
-  // each added letter that calls save()
   if (!this.isModified("password")) return next();
 
   bcrypt.hash(this.password, SALT_ROUNDS, (err, hash) => {
@@ -49,8 +45,6 @@ userSchema.pre("save", function(next) {
     return next();
   });
 });
-
-// Checks PW to make sure it is valid 
 userSchema.methods.checkPassword = function(plainTextPW, callback) {
   return bcrypt.compare(plainTextPW, this.password, function(err, isValid) {
     if (err) {
@@ -59,13 +53,8 @@ userSchema.methods.checkPassword = function(plainTextPW, callback) {
     callback(null, isValid);
   });
 };
-
-// Custom method for pushing new versions of letters to user object as reference
 userSchema.methods.addLetter = function(letter_id) {
   this.letters.push(letter_id);
 };
-
-// To check if the user is not duplicate email on update letter
 userSchema.plugin(uniqueValidator);
-
 module.exports = mongoose.model("User", userSchema);
