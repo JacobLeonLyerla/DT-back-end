@@ -5,7 +5,7 @@ const Tag = require("./tag");
 
 router.get("/:id", (req, res) => {
   const { id } = req.params;
-  Tag.findById(id)
+  Tag.findById(id).populate('comments')
     .then(response => {
       res.status(202).json(response);
     })
