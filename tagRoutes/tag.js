@@ -9,6 +9,8 @@ const Tag = new mongoose.Schema({
     type: String,
     required: true
   },
+  likes:String,
+  dislikes:String,
   country: String,
   region: String,
   city: String,
