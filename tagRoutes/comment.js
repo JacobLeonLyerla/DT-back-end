@@ -9,7 +9,7 @@ const Comment = new mongoose.Schema({
       type:ObjectId,
       ref:"User"
   },
-  user:{
+  username:{
       type:String,
       required:true
   },
