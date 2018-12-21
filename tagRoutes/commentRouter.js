@@ -5,7 +5,7 @@ const Comment = require("./comment");
 
 router.get("/:id", (req, res) => {
   const { id } = req.params;
-  Comment.findById(id)
+  Comment.findById(id).populate('user')
     .then(response => {
       res.status(202).json(response);
     })
