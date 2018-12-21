@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { protected, jwtStrategy } = require("../jwt/jwt");
 
-const Comment = require("./Comment");
+const Comment = require("./comment");
 
 router.get("/:id", (req, res) => {
   const { id } = req.params;
