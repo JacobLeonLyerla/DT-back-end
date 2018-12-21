@@ -37,7 +37,7 @@ router.get("/", validateToken, (req, res) => {
   });
   router.get("/:id",protected, (req, res) => {
     const { id } = req.params;
-    User.findById(id)
+    User.findById(id).populate('tag comment')
       .then(response => {
         res.status(202).json(response);
       })
