@@ -38,7 +38,8 @@ const userSchema = mongoose.Schema({
   ],
   comments:[
     {
-      type:String,
+      type:ObjectId,
+      ref:"Comment"
     }
   ],
   notifications:Array,
