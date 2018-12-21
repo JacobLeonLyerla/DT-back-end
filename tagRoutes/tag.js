@@ -5,6 +5,10 @@ const Tag = new mongoose.Schema({
     type: String,
     required: true
   },
+  user: {
+    type: String,
+    required: true
+  },
   country: String,
   region: String,
   city: String,
@@ -20,7 +24,7 @@ const Tag = new mongoose.Schema({
   zoom: Number,
   description:String,
   comments:Array,
-  
+
   createdOn:{
     type:Date,
     default: Date.now,
