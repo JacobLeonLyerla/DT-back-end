@@ -18,6 +18,9 @@ const Tag = new mongoose.Schema({
   latEnd: Number,
   lngEnd: Number,
   zoom: Number,
+  description:String,
+  comments:Array,
+  
   createdOn:{
     type:Date,
     default: Date.now,
