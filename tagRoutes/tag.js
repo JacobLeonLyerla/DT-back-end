@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const Tag = new mongoose.Schema({
   name: {
@@ -25,7 +26,12 @@ const Tag = new mongoose.Schema({
   lngEnd: Number,
   zoom: Number,
   description:String,
-  comments:Array,
+  comments:[
+    {
+      type:ObjectId,
+      ref:"Comment"
+    }
+  ],
 
   createdOn:{
     type:Date,
