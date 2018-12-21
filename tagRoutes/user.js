@@ -24,12 +24,24 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  letters: [
+  post: [
     {
       type: ObjectId,
-      ref: "Letter"
+      ref: "Tag"
     }
   ],
+  favorites:[
+    {
+      type: ObjectId,
+      ref: "Tag"
+    }
+  ],
+  comments:[
+    {
+      type:String,
+    }
+  ],
+  notifications:Array,
   membership: {
     type: Boolean,
     default: false
