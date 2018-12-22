@@ -9,7 +9,10 @@ const Comment = new mongoose.Schema({
       type:ObjectId,
       ref:"Comment"
   }],
-  replies:Array,
+  replies:[{
+    type:ObjectId,
+    ref:"Comment"
+}],
 
   username:{
       type:String,
