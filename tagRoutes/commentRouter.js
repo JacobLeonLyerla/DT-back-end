@@ -5,7 +5,7 @@ const Comment = require("./comment");
 
 router.get("/:id", (req, res) => {
   const { id } = req.params;
-  Comment.findById(id).populate('comment')
+  Comment.findById(id).populate('replies')
     .then(response => {
       res.status(202).json(response);
     })
@@ -28,7 +28,7 @@ router.put("/:id", (req, res) => {
     });
 });
 router.get("/",protected, (req, res) => {
-  Comment.find().populate("comment")
+  Comment.find().populate("replies")
     .then(response => {
       res.status(200).json(response);
     })
