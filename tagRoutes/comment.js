@@ -5,10 +5,10 @@ const Comment = new mongoose.Schema({
     type: String,
     required: true
   },
-  replyTo:{
+  replyTo:[{
       type:ObjectId,
       ref:"User"
-  },
+  }],
   username:{
       type:String,
       required:true
