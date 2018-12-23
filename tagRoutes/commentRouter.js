@@ -16,7 +16,7 @@ router.get("/:id", (req, res) => {
       res.status(500).json;
     });
 });
-router.delete((req, res) => {
+router.delete("/:id",(req, res) => {
   const {id} = req.params
   Comment
   .findByIdAndRemove(id)
