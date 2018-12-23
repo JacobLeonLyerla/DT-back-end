@@ -25,6 +25,7 @@ const validateToken = (req, res, next) => {
       });
     }
   };
+
 router.get("/", validateToken, (req, res) => {
     User.find({})
       .select('username')

@@ -16,6 +16,14 @@ router.get("/:id", (req, res) => {
       res.status(500).json;
     });
 });
+router.delete((req, res) => {
+  const {id} = req.params
+  User
+  .findByIdAndRemove(id)
+  .then(response=>{
+      res.status(204).end()
+  })
+})
 router.put("/:id", (req, res) => {
   const { id } = req.params;
   const update = req.body;
