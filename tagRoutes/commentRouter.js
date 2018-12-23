@@ -7,7 +7,10 @@ router.get("/:id", (req, res) => {
   const { id } = req.params;
   Comment.findById(id).populate({ 
     path : 'replies',
-    populate : { path : 'replies',path:"replyTo"}
+    populate : { path : 'replies'}
+})..populate({ 
+  path : 'replyTo',
+  populate : { path : 'replyTo'}
 })
     .then(response => {
       res.status(202).json(response);
