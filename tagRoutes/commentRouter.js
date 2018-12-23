@@ -8,7 +8,7 @@ router.get("/:id", (req, res) => {
   Comment.findById(id).populate({ 
     path : 'replies',
     populate : { path : 'replies'}
-})..populate({ 
+}).populate({ 
   path : 'replyTo',
   populate : { path : 'replyTo'}
 })
