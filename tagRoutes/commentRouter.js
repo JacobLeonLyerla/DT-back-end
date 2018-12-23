@@ -18,7 +18,7 @@ router.get("/:id", (req, res) => {
 });
 router.delete((req, res) => {
   const {id} = req.params
-  User
+  comment
   .findByIdAndRemove(id)
   .then(response=>{
       res.status(204).end()
