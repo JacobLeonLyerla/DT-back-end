@@ -46,4 +46,18 @@ router.get("/", validateToken, (req, res) => {
         res.status(500).json;
       });
   });
+  router.put("/:id", (req, res) => {
+    const { id } = req.params;
+    const update = req.body;
+    const options = {
+      new: true
+    };
+    USer.findByIdAndUpdate(id, update, options)
+      .then(response => {
+        res.status(200).json(response);
+      })
+      .catch(err => {
+        res.status(500).json({ error: err });
+      });
+  });
   module.exports = router;
