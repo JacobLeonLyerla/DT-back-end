@@ -32,7 +32,15 @@ const Tag = new mongoose.Schema({
       ref:"Comment"
     }
   ],
-
+  unreadComment:{
+    type:Number,
+    default:0
+  },
+  unreadLike:
+  {
+    type:Number,
+    default:0
+  },
   createdOn:{
     type:Date,
     default: Date.now,
