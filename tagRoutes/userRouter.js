@@ -52,7 +52,7 @@ router.get("/", validateToken, (req, res) => {
     const options = {
       new: true
     };
-    USer.findByIdAndUpdate(id, update, options)
+    User.findByIdAndUpdate(id, update, options)
       .then(response => {
         res.status(200).json(response);
       })
