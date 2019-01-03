@@ -12,6 +12,7 @@ const Tag = new mongoose.Schema({
   },
   likes:String,
   dislikes:String,
+  locationName:String,
   country: String,
   region: String,
   city: String,
