@@ -41,6 +41,7 @@ const Tag = new mongoose.Schema({
     type:Number,
     default:0
   },
+  markers:Array,
   createdOn:{
     type:Date,
     default: Date.now,
