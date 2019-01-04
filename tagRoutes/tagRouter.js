@@ -28,7 +28,7 @@ router.put("/:id", (req, res) => {
     });
 });
 router.get("/",protected, (req, res) => {
-  Tag.find().sort('createdOn').populate('comments')
+  Tag.find().sort('name').populate('comments')
     .then(response => {
       res.status(200).json(response);
     })
