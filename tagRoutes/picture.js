@@ -13,6 +13,7 @@ const Picture = new mongoose.Schema({
   city: String,
   lat: Number,
   lng: Number,
+  priority:Number,
   createdOn:{
     type:Date,
     default: Date.now,
