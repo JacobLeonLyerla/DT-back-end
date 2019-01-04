@@ -27,7 +27,7 @@ router.put("/:id", (req, res) => {
     });
 });
 router.get("/",protected, (req, res) => {
-  Picture.find().sort('priorty' ).sort('name')
+  Picture.find().sort('priority','name' )
     .then(response => {
       res.status(200).json(response);
     })
