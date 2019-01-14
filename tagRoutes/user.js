@@ -1,4 +1,3 @@
-
 // place for user model
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
@@ -30,19 +29,19 @@ const userSchema = mongoose.Schema({
       ref: "Tag"
     }
   ],
-  favorites:[
+  favorites: [
     {
       type: ObjectId,
       ref: "Tag"
     }
   ],
-  comments:[
+  comments: [
     {
-      type:ObjectId,
-      ref:"Comment"
+      type: ObjectId,
+      ref: "Comment"
     }
   ],
-  notifications:Array,
+  notifications: Array,
   membership: {
     type: Boolean,
     default: false
