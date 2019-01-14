@@ -5,7 +5,8 @@ const Tag = require("./tag");
 
 router.get("/:id", (req, res) => {
   const { id } = req.params;
-  Tag.findById(id).populate('comments')
+  Tag.findById(id)
+    .populate("comments")
     .then(response => {
       res.status(202).json(response);
     })
@@ -27,8 +28,10 @@ router.put("/:id", (req, res) => {
       res.status(500).json({ error: err });
     });
 });
-router.get("/",protected, (req, res) => {
-  Tag.find().sort('name').populate('comments')
+router.get("/", protected, (req, res) => {
+  Tag.find()
+    .sort("name")
+    .populate("comments")
     .then(response => {
       res.status(200).json(response);
     })

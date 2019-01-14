@@ -10,9 +10,9 @@ const Tag = new mongoose.Schema({
     type: String,
     required: true
   },
-  likes:String,
-  dislikes:String,
-  locationName:String,
+  likes: String,
+  dislikes: String,
+  locationName: String,
   country: String,
   region: String,
   city: String,
@@ -26,27 +26,26 @@ const Tag = new mongoose.Schema({
   latEnd: Number,
   lngEnd: Number,
   zoom: Number,
-  description:String,
-  comments:[
+  description: String,
+  comments: [
     {
-      type:ObjectId,
-      ref:"Comment"
+      type: ObjectId,
+      ref: "Comment"
     }
   ],
-  unreadComment:{
-    type:Number,
-    default:0
+  unreadComment: {
+    type: Number,
+    default: 0
   },
-  unreadLike:
-  {
-    type:Number,
-    default:0
+  unreadLike: {
+    type: Number,
+    default: 0
   },
-  markers:Array,
-  createdOn:{
-    type:Date,
-    default: Date.now,
-},
+  markers: Array,
+  createdOn: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model("Tag", Tag);
