@@ -5,19 +5,19 @@ const Picture = new mongoose.Schema({
     type: String,
     required: true
   },
-  tag:{
-      type:Array
+  tag: {
+    type: Array
   },
   country: String,
   region: String,
   city: String,
   lat: Number,
   lng: Number,
-  priority:Number,
-  createdOn:{
-    type:Date,
-    default: Date.now,
-},
+  priority: Number,
+  createdOn: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model("Picture", Picture);

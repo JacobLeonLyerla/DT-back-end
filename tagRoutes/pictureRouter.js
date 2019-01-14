@@ -26,8 +26,9 @@ router.put("/:id", (req, res) => {
       res.status(500).json({ error: err });
     });
 });
-router.get("/",protected, (req, res) => {
-  Picture.find().sort('-priority name' )
+router.get("/", protected, (req, res) => {
+  Picture.find()
+    .sort("-priority name")
     .then(response => {
       res.status(200).json(response);
     })
