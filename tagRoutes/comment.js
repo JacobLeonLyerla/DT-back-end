@@ -5,23 +5,27 @@ const Comment = new mongoose.Schema({
     type: String,
     required: true
   },
-  replyTo:[{
-      type:ObjectId,
-      ref:"Comment"
-  }],
-  replies:[{
-    type:ObjectId,
-    ref:"Comment"
-}],
+  replyTo: [
+    {
+      type: ObjectId,
+      ref: "Comment"
+    }
+  ],
+  replies: [
+    {
+      type: ObjectId,
+      ref: "Comment"
+    }
+  ],
 
-  username:{
-      type:String,
-      required:true
+  username: {
+    type: String,
+    required: true
   },
-  createdOn:{
-    type:Date,
-    default: Date.now,
-},
+  createdOn: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model("Comment", Comment);
