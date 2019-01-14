@@ -40,6 +40,5 @@ const validateRegisterInput = ({ username, email, password, password2 }) => {
     errors,
     isValid: isEmpty(errors)
   };
-
 };
 module.exports = validateRegisterInput;
