@@ -11,7 +11,7 @@ const makeToken = user => {
     membership: user.membership
   };
   const options = { expiresIn: "2h" };
-  return jwt.sign(payload, "secret212312", options);
+  return jwt.sign(payload, process.env.key, options);
 };
 
 const localStrategy = new LocalStrategy((username, password, done) => {
