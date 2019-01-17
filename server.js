@@ -23,7 +23,7 @@ mongoose
   .catch(() => console.log(`error connecting to mongo`));
 
 server.get("/", (req, res) => {
-  res.status(200).json({ api: `the api is running on port ${port}` });
+  res.status(200).json({ api: `the api is running on port ${process.env.key}` });
 });
 const port = process.env.PORT || 5500;
 
