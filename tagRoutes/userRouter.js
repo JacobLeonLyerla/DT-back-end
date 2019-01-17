@@ -13,7 +13,7 @@ const validateToken = (req, res, next) => {
       .status(422)
       .json({ error: "No authorization token found on Authorization header" });
   } else {
-    jwt.verify(token, "secret212312", (err, decoded) => {
+    jwt.verify(token, process.env.key, (err, decoded) => {
       if (err) {
         res
           .status(401)
