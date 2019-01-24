@@ -9,7 +9,7 @@
 # Deployment
 * Website: https://dreamtrekking.netlify.com/
 # Front End Repo
-* Front End: https://github.com/JacobLeonLyerla/DT-front-end/blob/master/README.md
+* Front End: https://github.com/JacobLeonLyerla/DT-front-end
 
 ## Built With
 * [Google Maps API](https://developers.google.com/maps/documentation/)
