@@ -1,9 +1,12 @@
 const Validator = require("validator");
+
 const isEmpty = require("../validation/is-empty");
 
 const validateLoginInput = ({ username, password }) => {
   let errros = {};
+
   username = !isEmpty(username) ? username : "";
+
   password = !isEmpty(password) ? password : "";
 
   if (!Validator.isLength(username, { min: 2, max: 30 })) {
@@ -17,7 +20,9 @@ const validateLoginInput = ({ username, password }) => {
   }
   return {
     errors,
+
     isValid: isEmpty(errors)
   };
 };
+
 module.exports = validateLoginInput;
