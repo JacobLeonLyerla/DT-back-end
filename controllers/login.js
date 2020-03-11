@@ -17,21 +17,35 @@ const makeToken = user => {
     membership: user.membership
   };
 
-  const options = { expiresIn: "2h" };
+  const options = {
+    expiresIn: "2h"
+  };
 
   return jwt.sign(payload, process.env.key, options);
 };
 
 const localStrategy = new LocalStrategy((username, password, done) => {
-  User.findOne({ username }, (err, user) => {
+  User.findOne({
+    username
+  }, (err, user) => {
     if (err) return done(err);
     if (!user) return done(null, false);
 
     user.checkPassword(password, (err, isMatch) => {
       if (err) return done(err);
       if (isMatch) {
-        const { _id, username, email, membership } = user;
-        return done(null, { _id, username, email, membership });
+        const {
+          _id,
+          username,
+          email,
+          membership
+        } = user;
+        return done(null, {
+          _id,
+          username,
+          email,
+          membership
+        });
       }
 
       return done(null, false);
@@ -39,10 +53,19 @@ const localStrategy = new LocalStrategy((username, password, done) => {
   });
 });
 
-const authenticate = passport.authenticate("local", { session: false });
+const authenticate = passport.authenticate("local", {
+  session: false
+});
 
 const login = (req, res) => {
-  res.json({ token: makeToken(req.user), user: req.user });
+  res.json({
+    token: makeToken(req.user),
+    user: req.user
+  });
 };
 
-module.exports = { login, authenticate, localStrategy };
+module.exports = {
+  login,
+  authenticate,
+  localStrategy
+};
