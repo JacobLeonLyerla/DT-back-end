@@ -1,4 +1,6 @@
-const { ExtractJwt } = require("passport-jwt");
+const {
+  ExtractJwt
+} = require("passport-jwt");
 
 const JwtStrategy = require("passport-jwt").Strategy;
 
@@ -25,6 +27,11 @@ const jwtStrategy = new JwtStrategy(jwtOptions, (payload, done) => {
     .catch(err => done(err, false));
 });
 
-const protected = passport.authenticate("jwt", { session: false });
+const protected = passport.authenticate("jwt", {
+  session: false
+});
 
-module.exports = { jwtStrategy, protected };
+module.exports = {
+  jwtStrategy,
+  protected
+};
