@@ -2,7 +2,10 @@ const router = require("express").Router();
 
 const jwt = require("jsonwebtoken");
 
-const { protected, jwtStrategy } = require("../jwt/jwt");
+const {
+  protected,
+  jwtStrategy
+} = require("../jwt/jwt");
 
 const User = require("./user");
 
@@ -19,14 +22,19 @@ const validateToken = (req, res, next) => {
 
       .status(422)
 
-      .json({ error: "No authorization token found on Authorization header" });
+      .json({
+        error: "No authorization token found on Authorization header"
+      });
   } else {
     jwt.verify(token, process.env.key, (err, decoded) => {
       if (err) {
         res
           .status(401)
 
-          .json({ error: "Token invalid, please login", message: err });
+          .json({
+            error: "Token invalid, please login",
+            message: err
+          });
       } else {
         // token is valid, so continue on to the next middleware/request handler function
         next();
@@ -48,7 +56,9 @@ router.get("/", validateToken, (req, res) => {
 });
 
 router.get("/:id", protected, (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
 
   User.findById(id)
     .populate("post favorites comments")
@@ -62,7 +72,9 @@ router.get("/:id", protected, (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
 
   const update = req.body;
 
@@ -76,7 +88,9 @@ router.put("/:id", (req, res) => {
     })
 
     .catch(err => {
-      res.status(500).json({ error: err });
+      res.status(500).json({
+        error: err
+      });
     });
 });
 
