@@ -1,11 +1,16 @@
 const router = require("express").Router();
 
-const { protected, jwtStrategy } = require("../jwt/jwt");
+const {
+  protected,
+  jwtStrategy
+} = require("../jwt/jwt");
 
 const Tag = require("./tag");
 
 router.get("/:id", (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
 
   Tag.findById(id)
     .populate("comments")
@@ -19,7 +24,9 @@ router.get("/:id", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
 
   const update = req.body;
 
@@ -33,7 +40,9 @@ router.put("/:id", (req, res) => {
     })
 
     .catch(err => {
-      res.status(500).json({ error: err });
+      res.status(500).json({
+        error: err
+      });
     });
 });
 
@@ -49,7 +58,9 @@ router.get("/", protected, (req, res) => {
     })
 
     .catch(err => {
-      res.status(500).json({ error: err });
+      res.status(500).json({
+        error: err
+      });
     });
 });
 
@@ -63,7 +74,9 @@ router.post("/", (req, res) => {
     })
 
     .catch(err => {
-      res.status(500).json({ error: err });
+      res.status(500).json({
+        error: err
+      });
     });
 });
 
