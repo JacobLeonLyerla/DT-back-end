@@ -37,28 +37,22 @@ const userSchema = mongoose.Schema({
     required: true
   },
 
-  post: [
-    {
-      type: ObjectId,
+  post: [{
+    type: ObjectId,
 
-      ref: "Tag"
-    }
-  ],
-  favorites: [
-    {
-      type: ObjectId,
+    ref: "Tag"
+  }],
+  favorites: [{
+    type: ObjectId,
 
-      ref: "Tag"
-    }
-  ],
+    ref: "Tag"
+  }],
 
-  comments: [
-    {
-      type: ObjectId,
+  comments: [{
+    type: ObjectId,
 
-      ref: "Comment"
-    }
-  ],
+    ref: "Comment"
+  }],
 
   notifications: Array,
 
@@ -71,7 +65,7 @@ const userSchema = mongoose.Schema({
   subscription: String
 });
 
-userSchema.pre("save", function(next) {
+userSchema.pre("save", function (next) {
   if (!this.isModified("password")) return next();
 
   bcrypt.hash(this.password, SALT_ROUNDS, (err, hash) => {
@@ -81,8 +75,8 @@ userSchema.pre("save", function(next) {
   });
 });
 
-userSchema.methods.checkPassword = function(plainTextPW, callback) {
-  return bcrypt.compare(plainTextPW, this.password, function(err, isValid) {
+userSchema.methods.checkPassword = function (plainTextPW, callback) {
+  return bcrypt.compare(plainTextPW, this.password, function (err, isValid) {
     if (err) {
       return callback(err);
     }
@@ -91,7 +85,7 @@ userSchema.methods.checkPassword = function(plainTextPW, callback) {
   });
 };
 
-userSchema.methods.addLetter = function(letter_id) {
+userSchema.methods.addLetter = function (letter_id) {
   this.letters.push(letter_id);
 };
 
