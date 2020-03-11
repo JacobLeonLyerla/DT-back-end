@@ -76,7 +76,7 @@ const Tag = new mongoose.Schema({
 
     default: Date.now
   }
-  
+
 });
 
 module.exports = mongoose.model("Tag", Tag);
