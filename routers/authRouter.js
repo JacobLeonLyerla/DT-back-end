@@ -1,15 +1,8 @@
 const router = require("express").Router();
 
-const {
-    login,
-    authenticate,
-    localStrategy
-} = require("../controllers/login");
+const { login, authenticate, localStrategy } = require("../controllers/login");
 
-const {
-    protected,
-    jwtStrategy
-} = require("../jwt/jwt");
+const { protected, jwtStrategy } = require("../jwt/jwt");
 
 const passport = require("passport");
 
