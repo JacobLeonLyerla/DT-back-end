@@ -1,6 +1,4 @@
-const {
-  ExtractJwt
-} = require("passport-jwt");
+const { ExtractJwt } = require("passport-jwt");
 
 const JwtStrategy = require("passport-jwt").Strategy;
 
@@ -11,27 +9,27 @@ const User = require("../tagRoutes/user");
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 
-  secretOrKey: process.env.key
+  secretOrKey: process.env.key,
 };
 
 const jwtStrategy = new JwtStrategy(jwtOptions, (payload, done) => {
   User.findById(payload.sub)
     .select("-password")
-    .then(user => {
+    .then((user) => {
       if (user) {
         done(null, user);
       } else {
         done(null, false);
       }
     })
-    .catch(err => done(err, false));
+    .catch((err) => done(err, false));
 });
 
 const protected = passport.authenticate("jwt", {
-  session: false
+  session: false,
 });
 
 module.exports = {
   jwtStrategy,
-  protected
+  protected,
 };
