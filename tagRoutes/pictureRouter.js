@@ -1,47 +1,40 @@
 const router = require("express").Router();
 
-const {
-  protected,
-  jwtStrategy
-} = require("../jwt/jwt");
+const { protected, jwtStrategy } = require("../jwt/jwt");
 
 const Picture = require("./picture");
 
 router.get("/:id", (req, res) => {
-  const {
-    id
-  } = req.params;
+  const { id } = req.params;
 
   Picture.findById(id)
 
-    .then(response => {
+    .then((response) => {
       res.status(202).json(response);
     })
 
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json;
     });
 });
 router.put("/:id", (req, res) => {
-  const {
-    id
-  } = req.params;
+  const { id } = req.params;
 
   const update = req.body;
 
   const options = {
-    new: true
+    new: true,
   };
 
   Picture.findByIdAndUpdate(id, update, options)
 
-    .then(response => {
+    .then((response) => {
       res.status(200).json(response);
     })
 
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
-        error: err
+        error: err,
       });
     });
 });
@@ -50,13 +43,13 @@ router.get("/", protected, (req, res) => {
 
     .sort("-priority name")
 
-    .then(response => {
+    .then((response) => {
       res.status(200).json(response);
     })
 
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
-        error: err
+        error: err,
       });
     });
 });
@@ -68,13 +61,13 @@ router.post("/", (req, res) => {
 
     .save()
 
-    .then(response => {
+    .then((response) => {
       res.status(201).json(response);
     })
 
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
-        error: err
+        error: err,
       });
     });
 });
