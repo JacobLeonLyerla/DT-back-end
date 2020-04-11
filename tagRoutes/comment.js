@@ -6,32 +6,36 @@ const Comment = new mongoose.Schema({
   comment: {
     type: String,
 
-    required: true
+    required: true,
   },
 
-  replyTo: [{
-    type: ObjectId,
+  replyTo: [
+    {
+      type: ObjectId,
 
-    ref: "Comment"
-  }],
+      ref: "Comment",
+    },
+  ],
 
-  replies: [{
-    type: ObjectId,
+  replies: [
+    {
+      type: ObjectId,
 
-    ref: "Comment"
-  }],
+      ref: "Comment",
+    },
+  ],
 
   username: {
     type: String,
 
-    required: true
+    required: true,
   },
 
   createdOn: {
     type: Date,
 
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Comment", Comment);
