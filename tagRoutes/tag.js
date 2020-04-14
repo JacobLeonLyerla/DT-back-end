@@ -6,13 +6,13 @@ const Tag = new mongoose.Schema({
   name: {
     type: String,
 
-    required: true
+    required: true,
   },
 
   user: {
     type: String,
 
-    required: true
+    required: true,
   },
 
   likes: String,
@@ -32,7 +32,7 @@ const Tag = new mongoose.Schema({
   tag: {
     type: Array,
 
-    required: true
+    required: true,
   },
 
   latStart: Number,
@@ -48,25 +48,23 @@ const Tag = new mongoose.Schema({
   description: String,
 
   comments: [
-
     {
       type: ObjectId,
 
-      ref: "Comment"
-    }
-
+      ref: "Comment",
+    },
   ],
 
   unreadComment: {
     type: Number,
 
-    default: 0
+    default: 0,
   },
 
   unreadLike: {
     type: Number,
 
-    default: 0
+    default: 0,
   },
 
   markers: Array,
@@ -74,9 +72,8 @@ const Tag = new mongoose.Schema({
   createdOn: {
     type: Date,
 
-    default: Date.now
-  }
-
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Tag", Tag);
