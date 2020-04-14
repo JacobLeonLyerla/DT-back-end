@@ -2,10 +2,7 @@ const router = require("express").Router();
 
 const jwt = require("jsonwebtoken");
 
-const {
-  protected,
-  jwtStrategy
-} = require("../jwt/jwt");
+const { protected, jwtStrategy } = require("../jwt/jwt");
 
 const User = require("./user");
 
@@ -23,7 +20,7 @@ const validateToken = (req, res, next) => {
       .status(422)
 
       .json({
-        error: "No authorization token found on Authorization header"
+        error: "No authorization token found on Authorization header",
       });
   } else {
     jwt.verify(token, process.env.key, (err, decoded) => {
@@ -33,7 +30,7 @@ const validateToken = (req, res, next) => {
 
           .json({
             error: "Token invalid, please login",
-            message: err
+            message: err,
           });
       } else {
         // token is valid, so continue on to the next middleware/request handler function
@@ -46,50 +43,46 @@ const validateToken = (req, res, next) => {
 router.get("/", validateToken, (req, res) => {
   User.find({})
     .select("username")
-    .then(users => {
+    .then((users) => {
       res.send(users);
     })
 
-    .catch(err => {
+    .catch((err) => {
       return res.send(err);
     });
 });
 
 router.get("/:id", protected, (req, res) => {
-  const {
-    id
-  } = req.params;
+  const { id } = req.params;
 
   User.findById(id)
     .populate("post favorites comments")
-    .then(response => {
+    .then((response) => {
       res.status(202).json(response);
     })
 
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json;
     });
 });
 
 router.put("/:id", (req, res) => {
-  const {
-    id
-  } = req.params;
+  const { id } = req.params;
 
   const update = req.body;
 
   const options = {
-    new: true
+    new: true,
   };
 
   User.findByIdAndUpdate(id, update, options)
-    .then(response => {
+    .then((response) => {
       res.status(200).json(response);
     })
 
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
-        error: err
+        error: err,
       });
     });
 });

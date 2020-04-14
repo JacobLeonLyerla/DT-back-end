@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
 
     unique: true,
 
-    lowercase: true
+    lowercase: true,
   },
 
   email: {
@@ -28,41 +28,47 @@ const userSchema = mongoose.Schema({
 
     unique: true,
 
-    lowercase: true
+    lowercase: true,
   },
 
   password: {
     type: String,
 
-    required: true
+    required: true,
   },
 
-  post: [{
-    type: ObjectId,
+  post: [
+    {
+      type: ObjectId,
 
-    ref: "Tag"
-  }],
-  favorites: [{
-    type: ObjectId,
+      ref: "Tag",
+    },
+  ],
+  favorites: [
+    {
+      type: ObjectId,
 
-    ref: "Tag"
-  }],
+      ref: "Tag",
+    },
+  ],
 
-  comments: [{
-    type: ObjectId,
+  comments: [
+    {
+      type: ObjectId,
 
-    ref: "Comment"
-  }],
+      ref: "Comment",
+    },
+  ],
 
   notifications: Array,
 
   membership: {
     type: Boolean,
 
-    default: false
+    default: false,
   },
 
-  subscription: String
+  subscription: String,
 });
 
 userSchema.pre("save", function (next) {
