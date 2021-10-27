@@ -12,10 +12,10 @@ const createUser = (req, res) => {
   myNewUser
     .save()
 
-    .then(user => {
+    .then((user) => {
       res.status(201).json(user);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json(err);
     });
 };

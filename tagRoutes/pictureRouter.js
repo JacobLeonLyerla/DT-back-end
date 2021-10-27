@@ -9,11 +9,11 @@ router.get("/:id", (req, res) => {
 
   Picture.findById(id)
 
-    .then(response => {
+    .then((response) => {
       res.status(202).json(response);
     })
 
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json;
     });
 });
@@ -23,17 +23,19 @@ router.put("/:id", (req, res) => {
   const update = req.body;
 
   const options = {
-    new: true
+    new: true,
   };
 
   Picture.findByIdAndUpdate(id, update, options)
 
-    .then(response => {
+    .then((response) => {
       res.status(200).json(response);
     })
 
-    .catch(err => {
-      res.status(500).json({ error: err });
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
     });
 });
 router.get("/", protected, (req, res) => {
@@ -41,12 +43,14 @@ router.get("/", protected, (req, res) => {
 
     .sort("-priority name")
 
-    .then(response => {
+    .then((response) => {
       res.status(200).json(response);
     })
 
-    .catch(err => {
-      res.status(500).json({ error: err });
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
     });
 });
 
@@ -57,12 +61,14 @@ router.post("/", (req, res) => {
 
     .save()
 
-    .then(response => {
+    .then((response) => {
       res.status(201).json(response);
     })
 
-    .catch(err => {
-      res.status(500).json({ error: err });
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
     });
 });
 module.exports = router;

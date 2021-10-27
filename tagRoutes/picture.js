@@ -4,11 +4,11 @@ const Picture = new mongoose.Schema({
   name: {
     type: String,
 
-    required: true
+    required: true,
   },
 
   tag: {
-    type: Array
+    type: Array,
   },
 
   country: String,
@@ -26,8 +26,8 @@ const Picture = new mongoose.Schema({
   createdOn: {
     type: Date,
 
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Picture", Picture);

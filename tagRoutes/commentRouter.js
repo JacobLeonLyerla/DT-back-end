@@ -11,9 +11,11 @@ router.get("/:id", (req, res) => {
     .populate({
       path: "replies",
 
-      populate: { path: "replies" }
+      populate: {
+        path: "replies",
+      },
     })
-    .then(response => {
+    .then((response) => {
       res.status(202).json(response);
     })
 
@@ -36,16 +38,18 @@ router.put("/:id", (req, res) => {
   const update = req.body;
 
   const options = {
-    new: true
+    new: true,
   };
 
   Comment.findByIdAndUpdate(id, update, options)
-    .then(response => {
+    .then((response) => {
       res.status(200).json(response);
     })
 
-    .catch(err => {
-      res.status(500).json({ error: err });
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
     });
 });
 
@@ -53,12 +57,14 @@ router.get("/", protected, (req, res) => {
   Comment.find()
     .populate("replies")
 
-    .then(response => {
+    .then((response) => {
       res.status(200).json(response);
     })
 
-    .catch(err => {
-      res.status(500).json({ error: err });
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
     });
 });
 
@@ -66,12 +72,14 @@ router.post("/", (req, res) => {
   const comment = new Comment(req.body);
   comment
     .save()
-    .then(response => {
+    .then((response) => {
       res.status(201).json(response);
     })
 
-    .catch(err => {
-      res.status(500).json({ error: err });
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
     });
 });
 
