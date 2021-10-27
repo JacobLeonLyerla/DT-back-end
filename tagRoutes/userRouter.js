@@ -74,7 +74,7 @@ router.put("/:id", (req, res) => {
   const options = {
     new: true,
   };
-
+  console.log(req.body)
   User.findByIdAndUpdate(id, update, options)
     .then((response) => {
       res.status(200).json(response);
