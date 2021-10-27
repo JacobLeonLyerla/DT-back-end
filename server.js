@@ -20,7 +20,12 @@ const CommentRouter = require("./tagRoutes/commentRouter");
 
 const server = express();
 
-server.use(cors({origin: 'https://dreamtrekking.netlify.app'}));
+const corsOptions ={
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}
+server.use(cors(corsOptions));
 
 
 server.use(express.json());
