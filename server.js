@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 
 const helmet = require("helmet");
 
+require('dotenv').config();
+
 const cors = require("cors");
 
 const PictureRouter = require("./tagRoutes/pictureRouter");
@@ -34,7 +36,7 @@ server.use("/users", UserRouter);
 server.use("/comments", CommentRouter);
 
 mongoose
-  .connect(`mongodb://jake:1test1@ds131954.mlab.com:31954/dream-trekking`)
+  .connect(`mongodb+srv://Jacob-db:${process.env.PASSWORD}@resume.s2iqz.mongodb.net/dreamDb?retryWrites=true&w=majority`)
 
   .then(() => console.log(`\n====  connected to mongo ====\n`))
 
