@@ -20,11 +20,11 @@ const CommentRouter = require("./tagRoutes/commentRouter");
 
 const server = express();
 
-server.use(cors());
+
 
 server.use(express.json());
 
-
+server.options('/',cors())
 server.use("/pictures", PictureRouter);
 
 server.use("/tags", TagsRouter);
@@ -42,7 +42,7 @@ mongoose
 
   .catch(() => console.log(`error connecting to mongo`));
 
-server.get("/", (req, res) => {
+server.get("/",cors(), (req, res) => {
 
   res.status(200).json({ api: `the api is running on port ${port}` });
 
