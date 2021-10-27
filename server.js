@@ -7,7 +7,7 @@ const helmet = require("helmet");
 require('dotenv').config();
 
 const cors = require("cors");
-
+const passport =require("passport")
 const PictureRouter = require("./tagRoutes/pictureRouter");
 
 const TagsRouter = require("./tagRoutes/tagRouter");
@@ -30,7 +30,7 @@ server.use(cors(corsOptions));
 
 server.use(express.json());
 
-
+server.use(passport.initialize());
 server.use("/pictures", PictureRouter);
 
 server.use("/tags", TagsRouter);
