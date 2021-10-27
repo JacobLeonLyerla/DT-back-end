@@ -20,7 +20,7 @@ const CommentRouter = require("./tagRoutes/commentRouter");
 
 const server = express();
 
-server.use(cors());
+
 
 server.use(express.json());
 
