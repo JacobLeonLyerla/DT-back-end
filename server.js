@@ -20,13 +20,10 @@ const CommentRouter = require("./tagRoutes/commentRouter");
 
 const server = express();
 
-server.use(cors("https://dreamtrekking.netlify.app"));
+server.use(cors());
 
 server.use(express.json());
-var corsOptions = {
-  origin: 'https://dreamtrekking.netlify.app/',
-  optionsSuccessStatus: 200 
-}
+
 
 server.use("/pictures", PictureRouter);
 
@@ -45,7 +42,7 @@ mongoose
 
   .catch(() => console.log(`error connecting to mongo`));
 
-server.get("/",cors(corsOptions), (req, res) => {
+server.get("/", (req, res) => {
 
   res.status(200).json({ api: `the api is running on port ${port}` });
 
