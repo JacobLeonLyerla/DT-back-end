@@ -22,7 +22,8 @@ const server = express();
 
 server.use(cors("https://dreamtrekking.netlify.app"));
 
-const corsOptions = {
+server.use(express.json());
+var corsOptions = {
   origin: 'https://dreamtrekking.netlify.app/',
   optionsSuccessStatus: 200 
 }
