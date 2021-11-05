@@ -35,9 +35,9 @@ const Tag = new mongoose.Schema({
     required: true,
   },
 
-  latStart: Number,
+  lat: Number,
 
-  lngStart: Number,
+  lng: Number,
 
   latEnd: Number,
 

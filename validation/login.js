@@ -8,7 +8,7 @@ const validateLoginInput = ({ username, password }) => {
   username = !isEmpty(username) ? username : "";
 
   password = !isEmpty(password) ? password : "";
-
+  
   if (
     !Validator.isLength(username, {
       min: 2,

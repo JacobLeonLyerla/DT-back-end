@@ -11,7 +11,6 @@ const jwtOptions = {
 
   secretOrKey: process.env.key,
 };
-console.log(process.env.key)
 const jwtStrategy = new JwtStrategy(jwtOptions, (payload, done) => {
   User.findById(payload.sub)
     .select("-password")
