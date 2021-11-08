@@ -72,5 +72,12 @@ router.post("/", (req, res) => {
       });
     });
 });
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+
+  Tag.findByIdAndRemove(id).then(() => {
+    res.status(204).end();
+  });
+});
 
 module.exports = router;
